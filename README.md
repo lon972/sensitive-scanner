@@ -1,10 +1,10 @@
 # SensitiveScanner
 
-企业本地敏感信息扫描工具第二阶段完整版。项目使用 Electron + Vue 3 + TypeScript + TailwindCSS + Vite + electron-builder，支持 Windows/macOS 双平台打包，内置 OCR、Office/PDF 解析与 TXT/HTML 报告输出。
+本地敏感信息扫描工具源码。项目使用 Electron + Vue 3 + TypeScript + TailwindCSS + Vite + electron-builder，提供 Windows/macOS 打包配置，以及 OCR、Office/PDF 解析与报告导出功能。本仓库暂不提供可直接安装的发行包。
 
 ## 功能概览
 
-- 普通用户安装后即可使用，不需要 Node.js、Python、rg/rga、Tesseract、Homebrew、scoop/choco。
+- 应用设计为打包后在本地运行；从本仓库源码构建时需要先准备依赖和平台二进制文件。
 - 扫描桌面常用目录，也支持用户自选目录。
 - 支持 `txt/md/markdown/html/htm/csv/tsv/json/yaml/yml/env/log/xml/ini/conf/sql/js/ts/vue/css/docx/xlsx/pptx/pdf/png/jpg/jpeg` 等常见文本、Office、PDF 和图片文件。
 - 支持文件名检测；即使文件内容类型暂不解析，只要文件名命中敏感词，也会进入报告。
@@ -34,7 +34,7 @@ project/
 
 ## 开发者准备事项
 
-你只需要安装 Node.js 与 pnpm 来进行开发构建；普通最终用户不需要任何环境。
+开发构建需要 Node.js、pnpm 和下列平台二进制文件。
 
 本公开源码副本不包含 `rg`、Tesseract 和 OCR 语言包等平台二进制文件。首次运行需要按下方说明自行放入对应目录；这些文件因体积和平台许可因素不随源码发布。
 
@@ -98,7 +98,7 @@ pnpm run dev:electron
 
 - 文本文件: 优先使用内置 `rg` 快速读取，再用 Node.js 做关键词命中与上下文截取。
 - 文件名: 对所有被枚举到的文件执行关键词检测，并在报告中标记为 `文件名`。首页可切换为“仅按文件名查找”，该模式不会打开文件内容，适合大型目录或 NAS 路径的快速排查。
-- 目录枚举: 扫描引擎边发现边处理文件，不再等待完整目录树枚举结束；遇到 15 秒无响应的目录或文件系统信息读取会跳过并继续后续路径。
+- 目录枚举: 扫描引擎边发现边处理文件，不再等待完整目录树枚举结束；遇到 5 秒无响应的目录或文件系统信息读取会跳过并继续后续路径。
 - 命中位置: 文本、PDF、Office、OCR 解析出的文本会在报告中标记内容行号；文件名命中会单独标记为文件名问题。
 - `docx`: `mammoth`
 - `xlsx`: `exceljs`
