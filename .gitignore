@@ -1,0 +1,50 @@
+# Dependencies and package-manager state
+node_modules/
+.pnpm-store/
+.npm/
+
+# Build and packaged artifacts
+dist/
+dist-electron/
+release/
+out/
+build/
+*.dmg
+*.pkg
+*.exe
+*.blockmap
+*.app/
+
+# Local runtime output
+reports/*
+!reports/.gitkeep
+logs/
+*.log
+*.pid
+
+# Local platform binaries and OCR data
+binaries/mac/*
+!binaries/mac/.gitkeep
+binaries/win/*
+!binaries/win/.gitkeep
+*.traineddata
+
+# Environment files and local configuration
+.env
+.env.*
+!.env.example
+*.local
+
+# Editors and operating-system metadata
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Temporary and coverage files
+.cache/
+coverage/
+*.tmp
+*.temp

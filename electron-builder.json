@@ -1,0 +1,62 @@
+{
+  "appId": "com.local.security.sensitivescanner",
+  "productName": "SensitiveScanner",
+  "directories": {
+    "buildResources": "public",
+    "output": "release"
+  },
+  "files": [
+    "dist/**/*",
+    "dist-electron/**/*",
+    "scanner/**/*",
+    "shared/**/*",
+    "rules/**/*",
+    "package.json"
+  ],
+  "asarUnpack": [
+    "scanner/**/*",
+    "rules/**/*"
+  ],
+  "mac": {
+    "target": [
+      "dmg"
+    ],
+    "artifactName": "SensitiveScanner.${ext}",
+    "category": "public.app-category.productivity",
+    "extraResources": [
+      {
+        "from": "binaries/mac",
+        "to": "binaries/mac",
+        "filter": [
+          "**/*"
+        ]
+      }
+    ]
+  },
+  "win": {
+    "target": [
+      {
+        "target": "nsis",
+        "arch": [
+          "x64"
+        ]
+      }
+    ],
+    "artifactName": "SensitiveScanner Setup.${ext}",
+    "extraResources": [
+      {
+        "from": "binaries/win",
+        "to": "binaries/win",
+        "filter": [
+          "**/*"
+        ]
+      }
+    ]
+  },
+  "nsis": {
+    "oneClick": false,
+    "allowToChangeInstallationDirectory": true,
+    "createDesktopShortcut": true,
+    "createStartMenuShortcut": true
+  }
+}

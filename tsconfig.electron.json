@@ -1,0 +1,19 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "outDir": "dist-electron",
+    "noEmit": false,
+    "types": [
+      "node",
+      "electron"
+    ]
+  },
+  "include": [
+    "electron/main.ts",
+    "scanner/**/*.ts",
+    "shared/**/*.ts",
+    "src/types/**/*.d.ts"
+  ]
+}
